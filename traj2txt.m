@@ -1,0 +1,54 @@
+function [] = traj2txt(filename,xx,tt)
+%TRAJ2TXT convert trajectory from MATLAB array to .txt file
+% 
+% [] = TRAJ2TXT(filename,xx,tt)
+% 
+% Inputs:
+%   filename    (string) name of desired text file <filename>.txt
+%   xx          [NX6] trajectory array [x,y,z,vx,vy,vz]
+%   tt          [NX1] time array
+% 
+% Provide sample usage code here
+% 
+% See also:
+
+if nargin < 3;  tt = zeros(length(xx),1);   end
+
+[m,n] = size(xx);
+if n ~= 7 && n~= 6 && n~= 3 && n ~= 42
+    if m == 7 || m == 6 || m == 3 || m == 42 
+        xx = xx';
+        n = m;
+    else
+        error("xx must be NX7, NX6, NX3, or NX42")
+    end     
+end
+if n == 42
+    xx = xx(37:42,:);
+end
+
+if n == 7
+    tt = xx(:,7);
+end
+
+% write .txt files
+name = "data/" + filename + ".txt";    
+fid = fopen(name, 'wt' );
+
+if n == 3
+    fprintf( fid, '%s,%s,%s,%s\n', 'x', 'y', 'z', 't');
+    for i = 1:length(xx)-1
+        fprintf( fid, '%f,%f,%f,%f\n', xx(i,1), xx(i,2), xx(i,3), tt(i));
+    end
+    fprintf( fid, '%f,%f,%f,%f\n', xx(end,1), xx(end,2), xx(end,3), tt(end));
+else
+    fprintf( fid, '%s,%s,%s,%s,%s,%s,%s\n', 'x', 'y', 'z', 'vx', 'vy', 'vz', 't');
+    for i = 1:length(xx)-1
+        fprintf( fid, '%f,%f,%f,%f,%f,%f,%f\n', xx(i,1), xx(i,2), xx(i,3), xx(i,4), xx(i,5), xx(i,6), tt(i));
+    end
+    fprintf( fid, '%f,%f,%f,%f,%f,%f,%f\n', xx(end,1), xx(end,2), xx(end,3), xx(end,4), xx(end,5), xx(end,6), tt(end));
+end    
+fclose(fid);
+
+% Author: Jared Blanchard 	Date: 2020/08/17 12:04:01 	Revision: 0.1 $
+end

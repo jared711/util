@@ -1,0 +1,40 @@
+function [r_sphere] = randomUniformSphereVolume(c,r,N,plot_flag)
+%RANDOMUNIFORMSPHEREVOLUME generates N random uniformly distributed points
+%inside a sphere of radius r centered at c.
+% 
+% [r_sphere] = RANDOMUNIFORMSPHEREVOLUME(c,r,N,plot_flag) Explain usage here
+% 
+% Inputs:
+%   c       (3X1) position of center of sphere [0;0;0]
+%   r       (scalar) radius of sphere [1]
+%   N       (scalar) number of points on sphere [100]
+%   plot    (bool) flag for plotting [0]
+% 
+% Outputs
+%   r_sphere    [NX3] points on sphere
+% 
+% See also: sphericalDisc randomUniformSphereVolume
+
+if nargin < 4;  plot_flag = 1;  end
+if nargin < 3;  N = 1000;        end
+if nargin < 2;  r = 1;          end
+if nargin < 1;  c = [0;0;0];    end
+if isrow(c);    c = c';         end
+
+
+wpos = 360;                     % circumference of projected cylinder (width of rectangle)
+hpos = 2;                   % height of projected cylinder (rectangle)
+xpos = wpos*rand(N,1);     % uniform sampling along width of rectangle
+ypos = hpos*rand(N,1);     % uniform sampling along height of rectangle
+lon = xpos;                     % longitude from Saturnfacing meridian [deg]
+lat = -asind(1 - hpos + ypos);  % latitude measured from equator (south pole)
+r_sphere = rlatlon2cart([r*rand(N,1).^,lat,lon], c');
+
+if plot_flag == 1
+    plot3(r_sphere(:,1),r_sphere(:,2),r_sphere(:,3),'.')
+end
+
+% Author: Jared Blanchard 	Date: 2020/07/23 20:58:14 	Revision: 0.1 $
+
+
+end
