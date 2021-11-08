@@ -166,7 +166,6 @@ if tfinal > t0 %FORWARD INTEGRATION
     if (event==0)
         if (t < tfinal)
             disp('SINGULARITY LIKELY.')
-            beep
             t
         end
     else

@@ -24,6 +24,8 @@ function [rvs, N, N_r, N_v] = initcond_4sphere(rv0, r_radius, v_radius, N_r, N_v
 % See also: 
 
 % Author: Jared Blanchard 	Date: 2021/10/27 09:33:16 	Revision: 0.1 $
+fprintf('initcond_4sphere\n')
+tic
 
 if nargin < 6;  global mu;  end
 if isempty(mu); mu = 2.528017682687079e-05; end % Jupiter/Europa system
@@ -56,5 +58,7 @@ for i = 1:N_r
     v_block = vs + vmag(i)*v0/norm(v0);
     rvs(:, idx:idx+N_v-1) = [r_block; v_block];
 end
+
+fprintf('Generated  %i initial conditions in %d seconds\n', N, toc)
 
 end

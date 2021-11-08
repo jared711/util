@@ -1,5 +1,5 @@
 function savefigs(str)
-%SAVEFIGS Save current figiure as .fig, .jpg. and .eps file in the 'fig/'
+%SAVEFIGS Save current figure as .fig, .jpg. and .eps file in the 'fig/'
 %folder
 
 % save into it using pwd to get the full path:

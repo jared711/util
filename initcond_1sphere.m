@@ -7,7 +7,7 @@ function [rvs, N] = initcond_1sphere(rv0, alpha, N, mu)
 %about the landing/periapsis position on the surface of the secondary body,
 %and they must have a velocity parallel to the landing/periapsis velocity.
 % 
-% [rvs, N] = INITCOND_1SPHERE(rv0, r_radius, R2, N, mu)
+% [rvs, N] = INITCOND_1SPHERE(rv0, alpha, N, mu)
 % 
 % Inputs: 
 %           rv0 (6x1) [] nondimensional state vector at landing/periapsis
@@ -22,6 +22,8 @@ function [rvs, N] = initcond_1sphere(rv0, alpha, N, mu)
 % See also: 
 
 % Author: Jared Blanchard 	Date: 2021/10/27 011:08:52 	Revision: 0.1 $
+fprintf('initcond_1sphere\n')
+tic
 
 if nargin < 4;  global mu;  end
 if isempty(mu); mu = 2.528017682687079e-05; end % Jupiter/Europa system
@@ -45,5 +47,7 @@ vs = (v0*vmag)/norm(v0);
 
 % put position and velocity together
 rvs = [rs; vs];
+
+fprintf('Generated  %i initial conditions in %d seconds\n', N, toc)
 
 end

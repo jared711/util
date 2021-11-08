@@ -1,7 +1,7 @@
 function [rvs, N, N_r, N_v] = initcond_3sphere(rv0, r_radius, alpha, N_r, N_v, mu)
 %INITCOND_3SPHERE generates a set of initial conditions near a landing
 %site that is homeomorphic to a 3sphere, the constraints being C = C0,
-%|r-r0| = r_radius and v*'v0 = |v||v0|cos(theta), assuming the CR3BP.
+%|r-r0| = r_radius and v*'v0 = |v||v0|cos(alpha), assuming the CR3BP.
 % 
 % [rvs, N, N_r, N_v] = INITCOND_3SPHERE(rv0, r_radius, alpha, N_r, N_v, mu)
 % 
@@ -22,6 +22,8 @@ function [rvs, N, N_r, N_v] = initcond_3sphere(rv0, r_radius, alpha, N_r, N_v, m
 % See also: 
 
 % Author: Jared Blanchard 	Date: 2021/10/27 08:59:52 	Revision: 0.1 $
+fprintf('initcond_3sphere\n')
+tic
 
 if nargin < 6;  global mu;  end
 if isempty(mu); mu = 2.528017682687079e-05; end % Jupiter/Europa system
@@ -53,5 +55,7 @@ for i = 1:N_r
     idx = (i-1)*N_v + 1;
     rvs(:, idx:idx+N_v-1) = [rs(:,i)*ones(1,N_v); vs*vmag(i)];
 end
+
+fprintf('Generated  %i initial conditions in %d seconds\n', N, toc)
 
 end
