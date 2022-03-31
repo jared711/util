@@ -9,7 +9,7 @@ global mu AU BODY EARTH MODEL SUN PRIM SEC RUNIT VUNIT TUNIT AUNIT
 disp('Set constants for object EARTH ind AU n global');
 disp('    To set Sun-Earth/Moon Model for RTBP, call setearth.m');
 % SUN.gm       = 132712440017.986999511718750000;
-SUN.gm       = 132712440017.986999511720000000;    % Aug 2013
+SUN.gm       = 132712440017.986999511720000000;    % [km^3/s^2] Aug 2013
 SUN.radius   = 696340; %[km[
 SUN.color    = [1,1,0];
 

@@ -1,5 +1,5 @@
 function h = plot_rv(rv,col,proj,linewidth,handlevis)
-% h=plot_rv(rv,col,proj,linewidth)
+% h=plot_rv(rv,col,proj,linewidth,handlevis)
 % Plots a point or trajectory
 % Inputs:
 %     rv = [6xN] state vectors [rv1, rv2] where rv = [rx;ry;rz;vx;vy;vz]

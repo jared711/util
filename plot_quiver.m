@@ -1,5 +1,6 @@
 function [] = plot_quiver(rv)
-%PLOT_QUIVER plots state vector(s) as a quiver
+%PLOT_QUIVER plots state vector(s) as a quiver, velocity emanating from
+%position
 % 
 % [] = PLOT_QUIVER(rv)
 % 

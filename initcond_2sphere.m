@@ -8,6 +8,9 @@ function [rvs, N, N_r, N_v] = initcond_2sphere(rv0, alpha_r, alpha_v, N_r, N_v, 
 %secondary body, and they are constrained in velocity space to a ring about
 %the landing velocity.
 % 
+% CORRECTION 12/10/21; This is not homeomorphic to a 2sphere, rather it is
+% a ring cross a ring
+% 
 % [rvs, N] = INITCOND_2SPHERE(rv0, alpha, N_r, N_v, mu)
 % 
 % Inputs: 

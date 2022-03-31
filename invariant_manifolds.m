@@ -1,5 +1,5 @@
 function [stab_idx, PHI_T, Wsp, Wsn, Wup, Wun] = invariant_manifolds(rv0, T, tf, num_pts, man_plot, color)
-% [stab_idx, PHI_T, Wsp, Wsn, Wup, Wun]  = invariant_manifolds(rv0, T, tf, num_pts, man_plot)
+% [stab_idx, PHI_T, Wsp, Wsn, Wup, Wun]  = invariant_manifolds(rv0, T, tf, num_pts, man_plot, color)
 % Takes the initial conditions of a periodic orbit and calculates the
 % invariant manifolds
 % Inputs:
@@ -46,16 +46,36 @@ stab_idx = stability_index(PHI_T);
 
 [VT, DT] = eig(PHI_T);
 
-Yws = VT(:,2);
-%Yws = Yws/norm(Yws(1:3));
-Ywu = VT(:,1);
-%Ywu = Ywu/norm(Ywu(1:3));
+[idx_s, idx_u] = find_stable_eigs(diag(DT));
+Yws = VT(:,idx_s); % stable direction
+Ywu = VT(:,idx_u); % unstable direction
+
+% real_idx = find(imag(diag(DT)) == 0);
+% if length(real_idx) ~= 2
+%     warning('There should be two real eigenvalues of the STM')
+% end
+% assert(length(real_idx) == 2,'There should be two real eigenvalues of the STM')
+% 
+% if (abs(DT(real_idx(1),real_idx(1))) < 1)
+%     Yws = VT(:,real_idx(1)); % stable direction
+%     %Yws = Yws/norm(Yws(1:3));
+%     Ywu = VT(:,real_idx(2)); % unstable direction
+%     %Ywu = Ywu/norm(Ywu(1:3));
+% else
+%     Yws = VT(:,real_idx(2)); % stable direction
+%     %Yws = Yws/norm(Yws(1:3));
+%     Ywu = VT(:,real_idx(1)); % unstable direction
+%     %Ywu = Ywu/norm(Ywu(1:3));
+% end
+
+
 
 if plot_on
     myfig = gcf;
 %     myfig = figure()
     hold on
-    plot_prims
+    plot_sec
+    plot_sphere(PRIM.radius/RUNIT, [-mu,0,0],myfig, 'b', 100)
     plot_rv(rv, 'k', 4, 4)
 end
 
@@ -111,20 +131,22 @@ for i = 1:step:lrv %rvi
 %         end
 %     end
 
-    evfcn = @(t,X) ef_collideSec(t,X);
-    [ttsp, xxsp] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalb, rv0sp, tol, trace, evfcn);
-    [ttsn, xxsn] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalb, rv0sn, tol, trace, evfcn);
-    
-    [ttup, xxup] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalf, rv0up, tol, trace, evfcn);
-    [ttun, xxun] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalf, rv0un, tol, trace, evfcn);
+%     evfcn = @(t,X) ef_collideSec(t,X);
 
-    
-    Wsp{Widx} = [xxsp, ttsp];
-    Wsn{Widx} = [xxsn, ttsn];
-    Wup{Widx} = [xxup, ttup];
-    Wun{Widx} = [xxun, ttun];
-    
     if plot_on
+        [ttsp, xxsp] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalb, rv0sp, tol, trace);%, evfcn);
+        [ttsn, xxsn] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalb, rv0sn, tol, trace);%, evfcn);
+
+        [ttup, xxup] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalf, rv0up, tol, trace);%, evfcn);
+        [ttun, xxun] = ode78e(@(t,y) CR3BPbrian(t,y), 0, tfinalf, rv0un, tol, trace);%, evfcn);
+
+
+        Wsp{Widx} = [xxsp, ttsp];
+        Wsn{Widx} = [xxsn, ttsn];
+        Wup{Widx} = [xxup, ttup];
+        Wun{Widx} = [xxun, ttun];
+    
+        
         plot_rv(xx(i,37:42),   'kx',4,4); %starting point
         for j = man_plot
             if j == 1;  plot_rv(xxsp, 'b',4,4);    end %Stable should be cool colors
@@ -132,6 +154,11 @@ for i = 1:step:lrv %rvi
             if j == 3;  plot_rv(xxup, 'r',4,4);    end %Unstable should be hot colors
             if j == 4;  plot_rv(xxun, color,4,4);    end
         end
+    else
+        Wsp(Widx,:) = [rv0sp', tt(i)];
+        Wsn(Widx,:) = [rv0sn', tt(i)];
+        Wup(Widx,:) = [rv0up', tt(i)];
+        Wun(Widx,:) = [rv0un', tt(i)];
     end
     
     %Plot manifolds

@@ -11,7 +11,7 @@ function setenceladus(ln)
 % 08/25/2015    Brian D. Anderson   Original Code
 % 01/23/2020    Jared T. Blanchard  Added color option
 
-global mu BODY SATURN ENCELADUS SUN LN RL PRIM SEC AU RUNIT TUNIT VUNIT AUNIT
+global mu e BODY SATURN ENCELADUS SUN LN RL PRIM SEC AU RUNIT TUNIT VUNIT AUNIT
 
 disp('Set SATURN-ENCELADUS System');
 SUN.name        = 'SUN';
@@ -38,7 +38,7 @@ SEC.gm          = 7.2027;                       % km^3/s^2  (+-0.0125)  http://s
 SEC.gm          = 7.210497553340731E+00;        % km^3/s^2  ftp://ssd.jpl.nasa.gov/pub/eph/satellites/nio/LINUX_PC/sat427l.nio
 SEC.radius      = 252.10;                       % km        (+-0.10 )   http://ssd.jpl.nasa.gov/?sat_phys_par
 SEC.sm          = 238042;                       % km        (+-?    )   http://ssd.jpl.nasa.gov/?sat_elem
-SEC.ecc         = 0.0000;                       % unitless  (+-?    )   http://ssd.jpl.nasa.gov/?sat_elem
+SEC.ecc         = 0.0047;                       % This comes from Wikipedia %%%%%% unitless  (+-?    )   http://ssd.jpl.nasa.gov/?sat_elem
 SEC.period      = 1.370 * 86400;                % sec       (+-?    )   http://ssd.jpl.nasa.gov/?sat_elem
 SEC.rot         = 2 * pi / SEC.period;          % rad/s synchronous     JUP310
 SEC.color       = [0.6 0.6 0.6];
@@ -46,7 +46,8 @@ SEC.img        = "enceladus.jpg";
 
 SEC.mu          = SEC.gm / (SEC.gm + PRIM.gm);
 mu              = SEC.mu;
-
+mu = 1.901109735892602e-7;
+e = SEC.ecc;
 AU              = 149597927.000;                % km
 
 BODY            = SEC;

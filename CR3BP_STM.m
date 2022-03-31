@@ -1,5 +1,13 @@
 function [statedot] = CR3BP_STM(t, state, mu)
-%Equations of motion for the Circular Restricted Three-Body Problem
+%Equations of motion for the Circular Restricted Three-Body Problem with state transition matrix
+% [statedot] = CR3BP_STM(t, state, mu)
+% 
+% Inputs:   t [NON] (scalar) time
+%           state [NON] (42x1) PHI;r;v
+%           mu [NON] (scalar) mass parameter
+%
+% Outputs:  statedot [NON] (42x1) PHI_dot;r_dot;v_dot 
+% 
 
 if nargin < 3; global mu; end
 

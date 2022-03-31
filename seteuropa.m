@@ -11,7 +11,7 @@ function seteuropa(ln)
 % 08/25/2015    Brian D. Anderson   Original Code
 % 01/23/2020    Jared T. Blanchard  Added color option
 
-global mu BODY JUPITER EUROPA SUN LN RL PRIM SEC AU RUNIT TUNIT VUNIT AUNIT
+global mu e BODY JUPITER EUROPA SUN LN RL PRIM SEC AU RUNIT TUNIT VUNIT AUNIT
 
 disp('Set JUPITER-EUROPA System');
 SUN.name        = 'SUN';
@@ -44,7 +44,7 @@ SEC.img        = "europa.jpg";
 
 SEC.mu          = SEC.gm / (SEC.gm + PRIM.gm);
 mu              = SEC.mu;
-
+e = SEC.ecc;
 AU              = 149597927.000;                % km
 
 BODY            = SEC;

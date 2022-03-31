@@ -2,11 +2,9 @@ function [lambda, tt, xx] = lyapExp(rv0, dt, tf)
 %LYAPEXP Calculates the local lyapunov exponent for a trajectory in the
 %CR3BP from time 0 to t.
 % 
-% [lambda] = LYAPEXP(PHI, t)
+% [lambda, tt, xx] = LYAPEXP(rv0, dt, tf)
 % 
 % Inputs:
-%   PHI     [6x6] state transition matrix of trajectory from 0 to t
-%   t       (scalar) time of integration
 % 
 % Outputs:
 %   lambda  (scalar) local lyapunov exponent

@@ -6,7 +6,7 @@ function setEarthMoon(ln)
 % ln defines the lagrange point number as origin, ln=0 sets origin as CR3BP
 % origin (system barycenter). ln=0 is the default if none is specified.
 
-global mu BODY EARTH MOON SUN LN RL PRIM SEC AU RUNIT TUNIT VUNIT AUNIT
+global mu e BODY EARTH MOON SUN LN RL PRIM SEC AU RUNIT TUNIT VUNIT AUNIT
 
 disp('Set EARTH-MOON System');
 SUN.name        = 'SUN';
@@ -40,7 +40,7 @@ PRIM.img        = "earth_day.jpg";
 AU              = 149597927.000;                % km
 
 mu              = SEC.gm / (SEC.gm + PRIM.gm);
-
+e = SEC.ecc;
 BODY            = SEC;
 MOON            = SEC;
 EARTH           = PRIM;
