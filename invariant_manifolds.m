@@ -36,6 +36,13 @@ else
 end
 
 [tt,xx] = ode78ej(@(t,y) CR3BP_STM(t,y,mu),0,T,y0,1e-12,0);
+if isnumeric(num_pts)
+    if size(xx,1) < num_pts
+        tspan = linspace(0,T,num_pts);
+        options = odeset('AbsTol',1e-12,'RelTol',1e-12);
+        [tt,xx] = ode113(@(t,y) CR3BP_STM(t,y,mu),tspan,y0,options);
+    end
+end
 
 rv = xx(:,37:42);           %all integrated states
 lrv = length(rv);

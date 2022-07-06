@@ -69,6 +69,7 @@ edgepi  = cosnu < -1 & abs(cosnu + 1) < 1e-10;
 cosnu(edge0)    = 1;
 cosnu(edgepi)   = -1;
 nu      = sign(dr).*acos(cosnu); %true anomaly, adjusted with quadrant check, based on radial velocity.
+nu = real(nu); % added by Jared, to keep from problems that arise with tiny imaginary components
 
 % compute argument of periapsis in rotating frame
 gbar    = th - nu;

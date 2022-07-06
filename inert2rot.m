@@ -1,9 +1,10 @@
 function rv_rot = inert2rot(rv_inert, t, origin, mu)
-% rv_rot = rot2inert(rv_inert, t, origin)
+% rv_rot = inert2rot(rv_inert, t, origin, mu)
 % Inputs:
-%     rv_inert = [6xN] state vectors [rv1, rv2, rv3] in inertial frame
-%     t = [1xN] non-dimensional time
-%     origin = (string) 'BARY', 'PRIM', 'SEC' origin of inertial frame
+%       rv_inert = [6xN] state vectors [rv1, rv2, rv3] in inertial frame
+%       t = [1xN] non-dimensional time
+%       origin = (string) 'BARY', 'PRIM', 'SEC' origin of inertial frame
+%       mu = (scalar) mass parameter {3.0404233e-06}
 % Outputs
 %     rv_rot = [6xN] state vectors [rv1, rv2, rv3] in rotating frame
 
