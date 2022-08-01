@@ -2,11 +2,11 @@ function rv_inert = rot2inert(rv_rot, theta, origin, mu)
 % rv_inert = rot2inert(rv_rot, theta, origin, mu)
 % converts state vector from rotating frame to inertial frame
 % Inputs:
-%     rv_rot = [6x1] state vector [rx;ry;rz;vx;vy;vz] in rotating frame
+%     rv_rot = [6xN] state vector [rx;ry;rz;vx;vy;vz] in rotating frame
 %     theta = (scalar) radians rotated
 %     origin = (string) 'BARY', 'PRIM', 'SEC' origin of inertial frame
 % Outputs
-%     rv_inert = [6x1] state vector [rx;ry;rz;vx;vy;vz] in inertial frame
+%     rv_inert = [6xN] state vector [rx;ry;rz;vx;vy;vz] in inertial frame
 
 [n,m] = size(rv_rot);
 if n ~= 6

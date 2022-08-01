@@ -4,7 +4,7 @@ if nargin < 6;  numpts = 100;       end
 if nargin < 5;  handlevis = 'off';  end
 if nargin < 4;  width = 1;          end
 if nargin < 3;  style = '-';        end
-if nargin < 2;  col = 'k';       end
+if nargin < 2;  col = 'k';          end
 if nargin < 1;  r = 1;              end
 
 theta = linspace(0,2*pi, numpts); 
