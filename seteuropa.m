@@ -44,7 +44,7 @@ SEC.img        = "europa.jpg";
 
 SEC.mu          = SEC.gm / (SEC.gm + PRIM.gm);
 mu              = SEC.mu;
-e = SEC.ecc;
+e               = SEC.ecc;
 AU              = 149597927.000;                % km
 
 BODY            = SEC;

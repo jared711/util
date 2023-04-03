@@ -1,4 +1,4 @@
-function [] = plot_quiver(rv)
+function [h] = plot_quiver(rv)
 %PLOT_QUIVER plots state vector(s) as a quiver, velocity emanating from
 %position
 % 
@@ -28,9 +28,9 @@ else
 end
 
 if m == 4
-    quiver(rv(1,:),rv(2,:),rv(3,:),rv(4,:))
+    h = quiver(rv(1,:),rv(2,:),rv(3,:),rv(4,:));
 elseif m == 6
-    quiver3(rv(1,:),rv(2,:),rv(3,:),rv(4,:),rv(5,:),rv(6,:))
+    h = quiver3(rv(1,:),rv(2,:),rv(3,:),rv(4,:),rv(5,:),rv(6,:));
 end
 
 end

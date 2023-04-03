@@ -14,7 +14,7 @@ function [C, U] = jacobi_constants(rv, mu, conv)
 if nargin < 3;  conv = 0;   end
 if nargin < 2;  global mu;  end
 
-rv = rv_sizeCheck(rv);
+% rv = rv_sizeCheck(rv);
 [n,m] = size(rv);
 
 if n == 6 || n == 4 % rv is of the correct dimensions been given correct dimensions

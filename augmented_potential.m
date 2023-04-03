@@ -1,5 +1,5 @@
 function U = augmented_potential(x,y,z,mu,conv)
-% U = aug_pot(x,y,z,mu,conv) computes the augmented potential in the CR3BP
+% U = augmented_potential(x,y,z,mu,conv) computes the augmented potential in the CR3BP
 
 if nargin < 5;  conv = 1;           end
 if nargin < 4;  global mu;          end

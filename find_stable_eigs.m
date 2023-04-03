@@ -17,9 +17,17 @@ function [idx_s, idx_u] = find_stable_eigs(lambda)
 % [~, idx_1] = mink(dist1, 2);
 
 dist1 = abs(abs(lambda) - 1); % find the eigenvalues with magnitude closest to one
-[~, idx_1] = mink(dist1, 4);
+[~, idx_1] = mink(dist1, 2);
 
-idx_su = setdiff(1:6, idx_1);
+idx_2 = find(lambda < 0);
+if isempty(idx_2)
+    [~,idx_2] = maxk(abs(imag(lambda)),2);
+    keyboard % idx_2 should be the two complex eigenvalues
+end
+
+idx_su = setdiff(1:6, unique([idx_1;idx_2]));
+
+
 
 if abs(lambda(idx_su(1))) > 1 % if the eigenvalue is larger than 1, it is unstable
     idx_u = idx_su(1);

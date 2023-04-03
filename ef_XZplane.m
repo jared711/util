@@ -1,3 +1,4 @@
+
 function [value,isterminal,direction,extra_cond] = ef_XZplane(t,X,DIR)
 % function [value,isterminal,direction] = compval(t,X,comp,val,DIR)
 % 
@@ -24,10 +25,7 @@ function [value,isterminal,direction,extra_cond] = ef_XZplane(t,X,DIR)
 % University of Southern California
 % Los Angeles, CA
 
-
-if nargin < 3
-    DIR     = 0; %default to intersect in either direction
-end
+if nargin < 3;  DIR = 0;    end  %default to intersect in either direction
 
 if X(1) > 0
     value = 0; % dummy value that never goes below zero

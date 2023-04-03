@@ -34,9 +34,9 @@ EARTH.color  = [0,0,1];
 % AU           = EARTH.sm;
 AU           = 149597870.691000015;   %[km]
 
-PRIM = SUN
+PRIM = SUN;
 
-SEC = EARTH
+SEC = EARTH;
 
 MODEL = 'EarthModel';
 mu = EARTH.mubary;

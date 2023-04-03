@@ -25,7 +25,7 @@ plot_lpts;
 view(2)
 camlight
 grid on
-axis equal
+% axis equal
 end
 
 %Changelog

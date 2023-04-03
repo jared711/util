@@ -1,4 +1,4 @@
-function plot_sec(col, fig_num, origin, inert)
+function h = plot_sec(col, fig_num, origin, inert)
 %plot_prim(col, fig_num)
 %Plots secondary body in CR3BP
 %Inputs:
@@ -22,9 +22,9 @@ if nargin < 1 || isempty(col);  col = [0.5,0.6,0.7];         end
 if isfield(SEC,'color');        col = SEC.color;             end
 
 if isfield(SEC,'img')
-    pltplanet(SEC.radius/RUNIT,[1-mu;0;0] + offset, SEC.img, fig_num)
+    h = pltplanet(SEC.radius/RUNIT,[1-mu;0;0] + offset, SEC.img, fig_num);
 else
-    plot_sphere(SEC.radius/RUNIT, [1-mu;0;0] + offset, fig_num, col);
+    h = plot_sphere(SEC.radius/RUNIT, [1-mu;0;0] + offset, fig_num, col);
 end
 
 if inert;   plot_circle(r, col, ':', 2, 'off'); end

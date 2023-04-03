@@ -1,10 +1,10 @@
 function rvdot = CR3BP_inert(t, rv, origin, mu)
-% Xdot = CR3BP_inert(t, X, mu)
+% Xdot = CR3BP_inert(t, X, origin, mu)
 % Inputs:
 %     t = (scalar) time, used by ode function
 %     rv = [6x1] state vector [rx;ry;rz;vx;vy;vz]
-%     mu = (scalar) gravitational parameter
 %     origin = (string) 'BARY', 'PRIM', 'SEC' origin of inertial frame
+%     mu = (scalar) gravitational parameter
 % Outputs:
 %     rvdot = [6x1] vector [vx;vy;vz;ax;ay;az]
 

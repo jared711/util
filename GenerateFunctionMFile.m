@@ -69,9 +69,9 @@ PrintCommentLine(fid);
 fprintf(fid, '%% [OUTPUTARGS] = %s(INPUTARGS)%s', ...
    upper(fnName), nl);
 PrintCommentLine(fid);
-fprintf(fid, '%% Inputs: %s', nl);
+fprintf(fid, '%% Inputs:   var_name (type) [units] description %s', nl);
 PrintCommentLine(fid);
-fprintf(fid, '%% Outputs: %s', nl);
+fprintf(fid, '%% Outputs:  var_name (type) [units] description %s', nl);
 PrintCommentLine(fid);
 fprintf(fid, '%% See also: %s', nl);
 fprintf(fid, nl);

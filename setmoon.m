@@ -1,4 +1,4 @@
-function setEarthMoon(ln)
+function setmoon(ln)
 % setEarthMoon(ln)
 % 
 % model for Earth-Moon CR3BP system

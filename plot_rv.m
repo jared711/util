@@ -33,20 +33,20 @@ end
 
 
 if proj <= 1
-   plot(rv(1,:),rv(2,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
+   h = plot(rv(1,:),rv(2,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
    xlabel('X [NON]');ylabel('Y [NON]')
 elseif proj==2
-   plot(rv(1,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
+   h = plot(rv(1,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
    xlabel('X [NON]');ylabel('Z [NON]')
 elseif proj==3
-   plot(rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
+   h = plot(rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
    xlabel('Y [NON]');ylabel('Z [NON]')
 elseif proj==4
-   plot3(rv(1,:),rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
+   h = plot3(rv(1,:),rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
    xlabel('X [NON]');ylabel('Y [NON]');zlabel('Z [NON]')
    view(2)
 elseif proj==5
-   subplot(2,2,1), plot(rv(1,:),rv(2,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis);grid;axis('equal');
+   h = subplot(2,2,1); plot(rv(1,:),rv(2,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis);grid;axis('equal');
    xlabel('X [NON]');ylabel('Y [NON]');
    hold on;
    subplot(2,2,2), plot(rv(1,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis);grid;axis('equal');
@@ -63,7 +63,7 @@ end
 grid on
 axis equal
 
-if nargout > 0; h = gcf;    end
+% if nargout > 0; h = gcf;    end
 
 %Changelog
 %Date           Programmer              Action

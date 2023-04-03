@@ -35,7 +35,7 @@ else
     y0 = [phi0; rv0];
 end
 
-[tt,xx] = ode78ej(@(t,y) CR3BP_STM(t,y,mu),0,T,y0,1e-12,0);
+[tt,xx] = ode78ej(@(t,y) CR3BP_STM(t,y,mu),0,T,y0,1e-16,0);
 if isnumeric(num_pts)
     if size(xx,1) < num_pts
         tspan = linspace(0,T,num_pts);
@@ -54,8 +54,8 @@ stab_idx = stability_index(PHI_T);
 [VT, DT] = eig(PHI_T);
 
 [idx_s, idx_u] = find_stable_eigs(diag(DT));
-Yws = VT(:,idx_s); % stable direction
-Ywu = VT(:,idx_u); % unstable direction
+Yws = real(VT(:,idx_s)); % stable direction
+Ywu = real(VT(:,idx_u)); % unstable direction
 
 % real_idx = find(imag(diag(DT)) == 0);
 % if length(real_idx) ~= 2

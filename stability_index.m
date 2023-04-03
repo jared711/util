@@ -1,5 +1,6 @@
 function idx = stability_index(PHI_T)
-% idx = stability_index(PHI_T)
+% idx = stability_index(PHI_T) computes the stability index of a monodromy
+% matrix PHI_T
 
 [n, m, p] = size(PHI_T);
 

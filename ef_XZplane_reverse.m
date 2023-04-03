@@ -1,7 +1,7 @@
 function [value,isterminal,direction,extra_cond] = ef_XZplane(t,X,DIR)
 % function [value,isterminal,direction] = compval(t,X,comp,val,DIR)
 % 
-% Event function for determining when state component reaches XZ plane (-X
+% Event function for determining when state component reaches XZ plane (+X
 % half plane)
 
 % inputs:
@@ -30,9 +30,9 @@ if nargin < 3
 end
 
 if X(1) < 0
-    value = 0; % dummy value that never goes below zero
+    value = 0 % dummy value that never goes below zero
 else 
-    value = X(2);% compute distance from plane
+    value = X(2)% compute distance from plane
 end
 isterminal  = 1;            % stop the integration
 direction   = DIR;          % any direction

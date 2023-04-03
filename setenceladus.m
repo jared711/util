@@ -46,13 +46,13 @@ SEC.img        = "enceladus.jpg";
 
 SEC.mu          = SEC.gm / (SEC.gm + PRIM.gm);
 mu              = SEC.mu;
-mu = 1.901109735892602e-7;
+mu = 1.901109735892602e-7; % Number from Damon
 e = SEC.ecc;
 AU              = 149597927.000;                % km
 
 BODY            = SEC;
-EUROPA          = SEC;
-JUPITER         = PRIM;
+ENCELADUS       = SEC;
+SATURN          = PRIM;
 
 RUNIT           = SEC.sm;
 TUNIT           = SEC.period / (2 * pi);

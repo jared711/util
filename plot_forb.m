@@ -1,11 +1,27 @@
 function plot_forb(C, dim3, mu, conv, range, numpts)
-% plot_forb(C, dim3, mu, conv, range, numpts)
-% Inputs:
-%     C = (scalar) Jacobi Constant
-%     dim3 = (boolean) Three-dimensional?
-%     conv = (boolean) convention
-%             if 1 
+%PLOT_FORB plots the forbidden region for a given Jacobi Constant
+% 
+% [] = PLOT_FORB(C, dim3, mu, conv, range, numpts)
+% 
+% Inputs:   C (scalar) [] Jacobi Constant
+%           dim3 (boolean) Three-dimensional? {0}
+%           mu (scalar) [] mass parameter {global mu}
+%           conv (boolean) convention mu*(1-mu) {0}
+%           range (1x4) [] range for plotting {[-1.5, 1.5, -1.5, 1.5]}
+%           numpts (scalar) [] number of points to plot {3000}
 %     
+% Οutputs:
+% 
+% See also: PLOT_CR3BP, PLOT_PRIM, PLOT_SEC, PLOT_RV
+
+% Author: Jared Blanchard 	Date: 2019/08/08 08:24:44 	Revision: 0.1 $ 
+%                                                       Code copied from Travis
+%                                                       Swenson's forbidden.m
+% Author: Jared Blanchard 	Date: 2019/08/23 08:24:44 	Revision: 0.2 $
+%                                                       Created own algorithm using
+%                                                       augmented_potential.m
+% Author: Jared Blanchard 	Date: 2019/08/23 08:24:44 	Revision: 0.3 $
+%                                                       Updated Documentation
 
 if nargin < 6;  numpts = 3000;                  end
 if nargin < 5;  range = [-1.5, 1.5, -1.5, 1.5]; end
@@ -40,10 +56,5 @@ end
 end
 
 
-%Changelog
-%Date               Programmer              Action
-%08/08/2019         Jared T. Blanchard      Code copied from Travis
-%                                           Swenson's forbidden.m
-%08/23/2019         Jared T. Blanchard      Created own algorithm using
-%                                           augmented_potential.m
+
 

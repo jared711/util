@@ -10,9 +10,9 @@ function [value,isterminal,direction,extra_cond] = compval2(t,X,comp,val,DIR,com
 % val       :desired value of X(comp)
 % DIR       :directional trigger [scalar] {0}
 % comp2     :second component index
-% val       :desired value of X(comp2)
-% lessthan  :if TRUE, will set extra_cond to TRUE if compare X(comp2) < val2
-%               otherwise, will compare X(comp2) >= val2
+% val2       :desired value of X(comp2)
+% lessthan  :if 1, will set extra_cond to TRUE if compare X(comp2) < val2
+%               if -1, will compare X(comp2) >= val2
 % 
 % outputs:
 % value     :value of plane offset [scalar]
@@ -60,6 +60,6 @@ if nargin < 5
     DIR     = 0; %default to intersect in either direction
 end
 
-value       = X(comp) - val;% compute distance from plane
+value       = X(comp) - val; % compute distance from plane always zero if extra_cond is set to zero
 isterminal  = 1;            % stop the integration
 direction   = DIR;          % any direction

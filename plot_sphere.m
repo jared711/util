@@ -1,4 +1,4 @@
-function plot_sphere(radius,cent,fig,col,npts,handleVis,myalpha)
+function h = plot_sphere(radius,cent,fig,col,npts,handleVis,myalpha)
 % function plot_sphere(radius,cent,fig,col,npts,handleVis,myalpha)
 if nargin < 7;  myalpha = 1;        end
 if nargin < 6   handleVis = 'off';   end
@@ -23,8 +23,8 @@ z       = z + cent(3);
 
 % plot sphere
 figure(fig)
-mysurf = surf(x,y,z,'FaceColor',col,'EdgeColor','none','HandleVisibility',handleVis);
-set(mysurf, 'FaceAlpha', myalpha);
+h = surf(x,y,z,'FaceColor',col,'EdgeColor','none','HandleVisibility',handleVis);
+set(h, 'FaceAlpha', myalpha);
 
 %Changelog
 %Date           Programmer              Action
