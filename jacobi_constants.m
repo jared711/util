@@ -19,11 +19,13 @@ if nargin < 2;  global mu;  end
 
 if n == 6 || n == 4 % rv is of the correct dimensions been given correct dimensions
     C = zeros(1,m);
+    U = zeros(1,m);
     for i = 1:m
         [C(i),U(i)] = jacobi_constant(rv(:,i), mu, conv);
     end
 elseif m == 6 || m == 4
     C = zeros(1,n);
+    U = zeros(1,n);
     for i = 1:n
         [C(i),U(i)] = jacobi_constant(rv(i,:)', mu, conv);
     end

@@ -34,29 +34,29 @@ end
 
 if proj <= 1
    h = plot(rv(1,:),rv(2,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
-   xlabel('X [NON]');ylabel('Y [NON]')
+   xlabel('x [NON]');ylabel('y [NON]')
 elseif proj==2
    h = plot(rv(1,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
-   xlabel('X [NON]');ylabel('Z [NON]')
+   xlabel('x [NON]');ylabel('z [NON]')
 elseif proj==3
    h = plot(rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
-   xlabel('Y [NON]');ylabel('Z [NON]')
+   xlabel('y [NON]');ylabel('z [NON]')
 elseif proj==4
    h = plot3(rv(1,:),rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis); hold on
-   xlabel('X [NON]');ylabel('Y [NON]');zlabel('Z [NON]')
+   xlabel('x [NON]');ylabel('y [NON]');zlabel('z [NON]')
    view(2)
 elseif proj==5
    h = subplot(2,2,1); plot(rv(1,:),rv(2,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis);grid;axis('equal');
-   xlabel('X [NON]');ylabel('Y [NON]');
+   xlabel('x [NON]');ylabel('y [NON]');
    hold on;
    subplot(2,2,2), plot(rv(1,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis);grid;axis('equal');
-   xlabel('X [NON]');ylabel('Z [NON]');
+   xlabel('x [NON]');ylabel('z [NON]');
    hold on;
    subplot(2,2,3), plot(rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis);grid;axis('equal');
-   xlabel('Y [NON]');ylabel('Z [NON]');
+   xlabel('y [NON]');ylabel('z [NON]');
    hold on;
    subplot(2,2,4), plot3(rv(1,:),rv(2,:),rv(3,:),col,'LineWidth',linewidth,'HandleVisibility',handlevis);
-   xlabel('X [NON]');ylabel('Y [NON]');zlabel('Z [NON]');axis('equal');
+   xlabel('x [NON]');ylabel('y [NON]');zlabel('z [NON]');axis('equal');
    hold on;
 end
 
