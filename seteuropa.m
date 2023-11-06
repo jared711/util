@@ -40,7 +40,7 @@ SEC.ecc         = 0.0094;                       % unitless  (+-?    )   http://s
 SEC.period      = 3.551 * 86400;                % sec       (+-?    )   http://ssd.jpl.nasa.gov/?sat_elem
 SEC.rot         = 2 * pi / SEC.period;          % rad/s synchronous     JUP310
 SEC.color       = [0.5,0.6,0.7];
-SEC.img        = "europa.jpg";
+SEC.img        = "europa_4k.jpg";
 
 SEC.mu          = SEC.gm / (SEC.gm + PRIM.gm);
 mu              = SEC.mu;

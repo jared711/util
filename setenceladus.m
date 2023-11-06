@@ -42,7 +42,7 @@ SEC.ecc         = 0.0047;                       % This comes from Wikipedia %%%%
 SEC.period      = 1.370 * 86400;                % sec       (+-?    )   http://ssd.jpl.nasa.gov/?sat_elem
 SEC.rot         = 2 * pi / SEC.period;          % rad/s synchronous     JUP310
 SEC.color       = [0.6 0.6 0.6];
-SEC.img        = "enceladus.jpg";
+SEC.img        = "enceladus_16k.jpg";
 
 SEC.mu          = SEC.gm / (SEC.gm + PRIM.gm);
 mu              = SEC.mu;

@@ -1,4 +1,4 @@
-function [PHI_T] = monodromy(rv0, T)
+function [PHI_T] = monodromy(rv0, T, mu)
 %MONODROMY computes the monodromy matrix of a periodic orbit in the CR3BP
 % 
 % [PHI_T] = MONODROMY(rv0, T)
@@ -11,6 +11,7 @@ function [PHI_T] = monodromy(rv0, T)
 % See also: 
 
 % Author: Jared Blanchard 	Date: 2022/04/25 17:23:14 	Revision: 0.1 $
+if nargin < 3;  global mu;  end
 
 PHI0 = reshape(eye(6),36,1);
 if ~iscolumn(rv0)
@@ -19,7 +20,7 @@ else
     y0 = [PHI0; rv0];
 end
 
-[~,xx] = ode78e(@(t,y) CR3BP_STM(t,y), 0, T, y0, 1e-12);
+[~,xx] = ode78e(@(t,y) CR3BP_STM(t,y, mu), 0, T, y0, 1e-12);
 
 PHI = xx(:,1:36);
 PHI_T = reshape(PHI(end,:),6,6);

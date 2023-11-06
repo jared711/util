@@ -17,7 +17,7 @@ function [CL1, CL2, CL3, CL4, CL5] = CLpts(mu)
 
 if nargin < 1;  global mu;  end
 
-Cs = jacobi_constants([CR3BPLpts; zeros(3,5)]);
+Cs = jacobi_constants([CR3BPLpts; zeros(3,5)], mu);
 CL1 = Cs(1);    CL2 = Cs(2);    CL3 = Cs(3);
 CL4 = Cs(4);    CL5 = Cs(5);
 end

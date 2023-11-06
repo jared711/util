@@ -1,4 +1,4 @@
-function Req = CR3BPLpts(tol)
+function Req = CR3BPLpts(mu, tol)
 % Req = CR3BPLpts(tol)
 % 
 % computes the 5 Lagrange points in the CR3BP.
@@ -20,13 +20,14 @@ function Req = CR3BPLpts(tol)
 % Los Angeles, CA
 
 
-% access global variables
-global mu
-
 % set default tolerance
-if nargin<1
+if nargin<2
     tol         = 1e-15;
 end
+
+% access global variables
+if nargin < 1;  global mu;  end
+
 
 % solve for L1
 alpha           = (mu/3*(1 - mu))^(1/3); %initial guess
