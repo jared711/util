@@ -116,7 +116,14 @@ elseif strcmp(method, "variable")
         else
             error('obs should be 1 or 2')
         end 
-        t(i) = (et(i) - et(1))/t_star;
+
+%         t(i) = (et(i) - et(1))/t_star;
+        if i == 1
+            t(i) = 0; %(et(i) - et(1))/t_star;
+        else
+            t(i) = (et(i) - et(i-1))/t_star + t(i-1);
+        end
+       
     end
 end
 

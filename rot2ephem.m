@@ -84,7 +84,12 @@ if strcmp(method,"fixed")
     end
 elseif strcmp(method, "variable")
     for i = 1:N
-        state_1_2 = cspice_spkezr(sec, et0 + t(i)*t_star, 'J2000', 'NONE', prim); % vector pointing from primary body to secondary body
+%         state_1_2 = cspice_spkezr(sec, et0 + t(i)*t_star, 'J2000', 'NONE', prim); % vector pointing from primary body to secondary body
+        if i == 1
+            state_1_2 = cspice_spkezr(sec, et0 + t(i)*t_star, 'J2000', 'NONE', prim); % vector pointing from primary body to secondary body
+        else
+            state_1_2 = cspice_spkezr(sec, et(i-1) + (t(i)-t(i-1))*t_star, 'J2000', 'NONE', prim); % vector pointing from primary body to secondary body
+        end
         rho_1_2 = state_1_2(1:3);
         rho_1_2_dot = state_1_2(4:6);
         omega = cross(rho_1_2, rho_1_2_dot)/norm(rho_1_2)^2;% [rad/sec]
@@ -115,7 +120,12 @@ elseif strcmp(method, "variable")
             error('obs should be 1 or 2')
         end  
 
-        et(i) = et0 + t(i)*t_star;
+        if i == 1
+            et(i) = et0 + t(i)*t_star;
+        else
+            et(i) = et(i-1) + (t(i)-t(i-1))*t_star;
+        end
+        
     end
 else
     error('method should be "fixed" or "variable", "%s" was given',method)
