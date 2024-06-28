@@ -1,9 +1,9 @@
-function [F_x] = jac_x(u, T, rv0)
+function [F_x] = jac_x(U, T, rv0)
 %JAC_X Jacobian of stroboscopic map with respect to invariant circle
 % 
 % [F_x] = JAC_X(u, T)
 % 
-% Inputs:   u (nxN) [NON] states on invariant circle
+% Inputs:   U (Nxn) [NON] states on invariant circle
 %           T (scalar) [NON] period of stroboscopic map
 %           rv0 (nx1) [NON] base point of invariant circle
 % 
@@ -18,11 +18,11 @@ if nargin < 3
     rv0 = zeros(6,1);
 end
 
-[n,N] = size(u);
+[N,n] = size(U);
 F_x = zeros(n*N);
 for i = 1:N
     idx = (i-1)*n + 1:i*n;
-    F_x(idx, idx) = monodromy(rv0 + u(:,i),T);
+    F_x(idx, idx) = monodromy(rv0 + U(i,:),T);
 end
 
 end

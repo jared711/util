@@ -1,10 +1,12 @@
 function [u, rho, T, du_norm, G_x] = diffCorrQPO(u, rho, T, varargin)
-%DIFFCORRQPO Differential corrector taking an initial guess of a QPO and
+% OUTDATED
+% 
+% DIFFCORRQPO Differential corrector taking an initial guess of a QPO and
 % correcting it until convergence. Following the work in Olikara, Scheeres
 % (2012) Numerical method for computing quasi-periodic orbits and their
 % stability in the restricted three-body problem.
 % 
-% [uf] = DIFFCORRQPO(u, max_iter, epsilon, plot_on)
+% [u, rho, T, du_norm, G_x] = DIFFCORRQPO(u, rho, T, varargin)
 % 
 % Inputs:   u (6xN) [NON] initial guess of states on invariant circle 
 %           rho (scalar) [rad] ititial guess for rotation number
@@ -41,9 +43,9 @@ if n > N
     warning("n is larger than N. Make sure u is an array of column vectors")
 end
 
-T_idx = n*N + 1; % index of dT variable
-rho_idx = T_idx + 1; % index of drho variable
-lambda_idx = rho_idx + 1; % index of drho variable
+T_idx = n*N + 1; % index of T variable
+rho_idx = T_idx + 1; % index of rho variable
+lambda_idx = rho_idx + 1; % index of lambda variable
 
 
 [D, Dinv, dDinvdtheta] = matFourier(N, n);
@@ -114,8 +116,8 @@ for iter = 1:max_iter
     dlambda = dvec(lambda_idx);
 
     u_vec = u_vec + du;
-    rho = rho + drho;
     T = T + dT;
+    rho = rho + drho;
 
     u = reshape(u_vec, n, N);
 

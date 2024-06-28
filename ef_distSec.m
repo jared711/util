@@ -1,5 +1,5 @@
-function [value,isterminal,direction] = ef_distSec(et, X, rval)
-% function [value,isterminal,direction] = ef_distSec(et, X, rval)
+function [value,isterminal,direction] = ef_distSec(t, X, rval)
+% function [value,isterminal,direction] = ef_distSec(t, X, rval)
 
 % inputs:
 % t         :time [scalar]

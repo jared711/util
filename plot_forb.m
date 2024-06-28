@@ -34,7 +34,11 @@ if dim3
     numpts = 300;
     x = linspace(range(1),range(2),numpts);
     y = linspace(range(3),range(4),numpts);
-    z = linspace(-0.1,0.1,numpts);
+    if length(range) <= 4
+        z = linspace(-0.1,0.1,numpts);
+    else
+        z = linspace(range(5),range(6),numpts);
+    end
     [X,Y,Z] = meshgrid(x,y,z);
     U = augmented_potential(X,Y,Z, mu, conv);
     patch(isosurface(X,Y,Z,U,E),'FaceColor',[.8,.8,.8],'EdgeColor','none');

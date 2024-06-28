@@ -1,5 +1,6 @@
-function plot_circle(r, col, style, width, handlevis, numpts)
+function plot_circle(r, col, style, width, handlevis, numpts, filled)
 %  plot_circle(r, col, style, width, handlevis, numpts)
+if nargin < 7;  filled = false;     end
 if nargin < 6;  numpts = 100;       end
 if nargin < 5;  handlevis = 'off';  end
 if nargin < 4;  width = 1;          end
@@ -9,6 +10,11 @@ if nargin < 1;  r = 1;              end
 
 theta = linspace(0,2*pi, numpts); 
 plot(r*cos(theta),r*sin(theta),'Color',col,'LineStyle',style,'LineWidth',width,'HandleVisibility',handlevis);
+
+if filled
+    fill(r*cos(theta),r*sin(theta),'Color',col,'HandleVisibility',handlevis)
+end
+
 end
 
 %Changelog

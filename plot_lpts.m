@@ -12,7 +12,7 @@ end
 gcf
 hold on
 for i = idx
-    plot3(lpts(1,i), lpts(2,i), lpts(3,i), col+"x", "HandleVisibility","off",'MarkerSize',12)
+    plot3(lpts(1,i), lpts(2,i), lpts(3,i), col+"x", "HandleVisibility","off",'MarkerSize',6)
 end
 grid('on');
 end

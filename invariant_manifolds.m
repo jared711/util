@@ -53,7 +53,8 @@ stab_idx = stability_index(PHI_T);
 
 [VT, DT] = eig(PHI_T);
 
-[idx_s, idx_u] = find_stable_eigs(diag(DT));
+% [idx_s, idx_u] = find_stable_eigs(diag(DT));
+[idx_u, idx_s] = get_stable_eigs(diag(DT));
 Yws = real(VT(:,idx_s)); % stable direction
 Ywu = real(VT(:,idx_u)); % unstable direction
 
@@ -98,7 +99,7 @@ for i = 1:step:lrv %rvi
     
     PHI_t0t1 = reshape(phi(i,:),6,6);
     
-    alpha = 1e-6;
+    alpha = 1e-4;
     rv0sp = xx(i,37:42)' + alpha*PHI_t0t1*Yws/norm(PHI_t0t1*Yws); 
     rv0sn = xx(i,37:42)' - alpha*PHI_t0t1*Yws/norm(PHI_t0t1*Yws);
     rv0up = xx(i,37:42)' + alpha*PHI_t0t1*Ywu/norm(PHI_t0t1*Ywu);

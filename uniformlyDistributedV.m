@@ -4,7 +4,7 @@ function [vs] = uniformlyDistributedV(r,C,el_min,el_max,N,n,plot_flag,mu)
 %velocity vectors are constrained to yield the Jacobi constant C when
 %paired with the position r.
 % 
-% [vs] = UNIFORMLYDISTRIBUTEDV(r, C, el_min, el_max, N, n, plot_flag)
+% [vs] = UNIFORMLYDISTRIBUTEDV(r, C, el_min, el_max, N, n, plot_flag, mu)
 % 
 % Inputs: 
 %   r           [3X1] position vector from which velocities will spread
@@ -14,7 +14,7 @@ function [vs] = uniformlyDistributedV(r,C,el_min,el_max,N,n,plot_flag,mu)
 %   N           (scalar) number of velocities to generate [100]
 %   n           [3X1] normal vector from surface of planet at r
 %   plot_flag   (bool) flag for plotting [0]
-%   mu          (scalar) gravitational parameter
+%   mu          (scalar) gravitational parameter {global mu}
 % 
 % Outputs: 
 %   vs          [NX3] uniformly sampled velocities
